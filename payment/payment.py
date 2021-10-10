@@ -19,7 +19,7 @@ def initializePayment():
     }
     })
     headers = {
-    'Authorization': 'Bearer sk_test_fd25ed2426ee5c9bca6b5c16dc74af2d1a46a807',
+    'Authorization': 'Bearer sk_test_7f5a733792814ee35a10347c31b596808d9362bd',
     'Content-Type': 'application/json'
     }
 
