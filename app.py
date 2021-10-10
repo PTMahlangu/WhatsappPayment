@@ -28,5 +28,7 @@ def reply():
     phone_no = request.form.get('From')
     url = initializePayment()["data"]["authorization_url"]
 
+    if message == "done":
+        return respond(f'Danko your payment was succefull.')
     if message:
-        return respond(f'Please follow the link to complet payment: '+ url)
+        return respond(f'Please click the link to complete payment. Replay *done* when done: '+ url)
