@@ -27,10 +27,11 @@ def reply():
     message = request.form.get('Body').lower()
 
     phone_no = request.form.get('From')
-    url = initializePayment()["data"]["authorization_url"]
+    # url = initializePayment()["data"]["authorization_url"]
 
     if message == "done":
         return respond(f'Danko! your payment was successfully.')
-    if message:
-        return respond(f'Please click the link to complete payment and reply *done*: '+ url)
+
+    # if message:
+    #     return respond(f'Please click the link to complete payment and reply *done*: '+ url)
 
