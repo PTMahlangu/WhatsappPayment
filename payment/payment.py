@@ -1,5 +1,10 @@
 import requests
 import json
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+Secret_Key = os.environ['paystack_Secret_Key']
 
 def initializePayment():
     url = "https://api.paystack.co/transaction/initialize"
@@ -19,7 +24,7 @@ def initializePayment():
     }
     })
     headers = {
-    'Authorization': 'Bearer sk_test_7f5a733792814ee35a10347c31b596808d9362bd',
+    'Authorization': 'Bearer {Secret_Key}',
     'Content-Type': 'application/json'
     }
 
@@ -28,6 +33,8 @@ def initializePayment():
         return response.json()
     else:
         return "Error initialize. Please try again."
+
+
 
 
 # https://documenter.getpostman.com/view/2770716/paystack-api/7187aMn
