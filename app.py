@@ -29,4 +29,4 @@ def reply():
     url = initializePayment()["data"]["authorization_url"]
 
     if message:
-        return respond(f'Please follow the link to complet payment'+ url)
+        return respond(f'Please follow the link to complet payment: '+ url)
