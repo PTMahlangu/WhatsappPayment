@@ -32,6 +32,6 @@ def reply():
     if message == "done":
         return respond(f'Danko! your payment was successfully.')
 
-    if message:
+    elif message:
         return respond(f'Please click the link to complete payment and reply *done*: '+ url)
 
