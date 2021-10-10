@@ -24,5 +24,6 @@ def home():
 def reply():
     message = request.form.get('Body').lower()
     phone_no = request.form.get('From')
+
     if message:
-        return respond(f'Thank you for your message! '+phone_no+message)
+        return respond(f'Thank you for your message! '+ phone_no + message)
