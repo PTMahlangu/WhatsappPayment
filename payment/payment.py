@@ -25,7 +25,7 @@ def initializePayment():
     })
     
     headers = {
-    'Authorization': 'Bearer {Secret_Key}',
+    'Authorization': f'Bearer {Secret_Key}',
     'Content-Type': 'application/json'
     }
 
