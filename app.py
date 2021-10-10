@@ -23,6 +23,7 @@ def home():
 @app.route('/message', methods=['POST'])
 def reply():
     message = request.form.get('Body').lower()
+    
     phone_no = request.form.get('From')
 
     if message:
