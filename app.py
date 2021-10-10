@@ -31,4 +31,5 @@ def reply():
     if message == "done":
         return respond(f'Danko! your payment was successfully.')
     if message:
-        return respond(f'Please click the link to complete payment. Replay *done* when done: '+ url)
+        return respond(f'Please click the link to complete payment and reply *done*: '+ url)
+

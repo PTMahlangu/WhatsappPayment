@@ -30,4 +30,4 @@ def initializePayment():
         return "Error initialize. Please try again."
 
 
-# print(initializePayment()["data"]["authorization_url"])
+# https://documenter.getpostman.com/view/2770716/paystack-api/7187aMn
