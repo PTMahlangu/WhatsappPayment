@@ -18,7 +18,7 @@ def respond(message):
 
 @app.route('/')
 def home():
-    return 'welcome to the whatsappbot'
+    return 'welcome to whatsappbot payment'
 
 @app.route('/message', methods=['POST'])
 def reply():
