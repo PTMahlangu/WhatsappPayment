@@ -34,9 +34,12 @@ def respond(message):
     response.message(message)
     return str(response)
 
+@app.route('/')
+def home():
+    return "welcome to whatsapp payment integration"
 
 @app.route('/yoco')
-def home():
+def yoco_home():
     return render_template('home.html')
 
 @app.route('/pay',methods=['POST'])
@@ -57,5 +60,5 @@ def reply():
         return respond(f'Danko! your payment was successfully.')
 
     if "pay" in message:
-        return respond(f'Please click the link to complete payment and reply *done*: '+ request.url)
+        return respond(f'Please click the link to complete payment and reply *done*: '+ url)
 
