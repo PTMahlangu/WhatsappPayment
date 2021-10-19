@@ -38,15 +38,6 @@ def respond(message):
 def home():
     return "welcome to whatsapp payment integration"
 
-@app.route('/yoco')
-def yoco_home():
-    return render_template('home.html')
-
-@app.route('/pay',methods=['POST'])
-def yoco_pay():
-    data = request.json
-    print(data["token"])
-    return yocoPayment(data["token"])
 
 @app.route('/message', methods=['POST'])
 def reply():
