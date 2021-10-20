@@ -61,6 +61,9 @@ def reply():
     else:
         reply = kernel.respond("Pay "+message)
 
+    if not reply:
+        reply = kernel.respond("hi")
+
     if kernel.getPredicate("amount"):
         amount = int(kernel.getPredicate("amount"))*100
         url = initializePayment(phone_no,amount)["data"]["authorization_url"]
