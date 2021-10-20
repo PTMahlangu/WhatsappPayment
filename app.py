@@ -62,7 +62,7 @@ def reply():
         reply = kernel.respond("Pay "+message)
 
     if not reply:
-        reply = kernel.respond("hi")
+        reply = "Oops! Something wrong. How much would you like to pay?"
 
     if kernel.getPredicate("amount"):
         amount = int(kernel.getPredicate("amount"))*100
