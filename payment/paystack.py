@@ -6,12 +6,13 @@ from dotenv import load_dotenv
 load_dotenv()
 Secret_Key = os.environ['paystack_Secret_Key']
 
-def initializePayment(phone_no):
+def initializePayment(phone_no,amount):
+
     url = "https://api.paystack.co/transaction/initialize"
 
     payload = json.dumps({
     "email": "mahlangu@email.com",
-    "amount": "30000",
+    "amount": amount,
     "currency": "ZAR",
     "metadata": {
         "custom_fields": [

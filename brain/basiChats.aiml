@@ -1,40 +1,33 @@
 <aiml version="1.0.1" encoding="UTF-8">
 <!-- basic_chat.aiml -->
 
-    <category>
-        <pattern>HELLO *</pattern>
-        <template>
-            <random>
-            <li>HELLO SIR</li> 
-            <li>How ARE YOU?</li>
-            <li>Be more specific.</li>
-            <li>I did not know that.</li>
-            <li>Are you telling the truth?</li>
-            <li>I don't know what that means.</li>
-            <li>Try to tell me that another way.</li>
-            <li>Are you talking about an animal, vegetable or mineral?</li>
-            <li>What is it?</li>
-        </random>
-        </template>
-    </category>
 
+
+   <category>
+      <pattern>HI</pattern>
+      <template>
+        Welcome to Whatsapp payment integration. How much would you like to pay? 
+      </template>
+   </category>
 
 
     <category>
         <pattern>PAY *</pattern>
         <template>
-            Please confirm that you're paying R <star/>, (y/n).
+            Please confirm that you're paying R <set name = "amount"> <star/> </set>, (y/n).
         </template>
     </category>
 
    <category>
       <pattern>Y</pattern>
-      <template>Please click the link to complete payment : </template>
+      <template>
+        Please click the link to complete the payment : <get name = "url"></get>
+      </template>
    </category>
 
    <category>
       <pattern>N</pattern>
-      <template>Please click the link to complete payment : </template>
+      <template>Retype correct amount</template>
    </category>
 
     <category>

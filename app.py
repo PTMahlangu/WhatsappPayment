@@ -10,17 +10,28 @@ from payment.paystack import initializePayment
 load_dotenv()
 
 # Create the kernel and learn AIML files
-# kernel = aiml.Kernel()
+kernel = aiml.Kernel()
 
-# for filename in os.listdir("brain"):
-# 	if filename.endswith(".aiml"):
-# 		kernel.learn("brain/" + filename)
+for filename in os.listdir("brain"):
+	if filename.endswith(".aiml"):
+		kernel.learn("brain/" + filename)
 
 
 # while True:
-#     msg =input("Enter inpuet :")
-#     reply = kernel.respond(msg)
-#     print(reply)
+#     msg =input("Enter input :")
+
+#     if not msg.isdigit():
+#         reply = kernel.respond(msg)
+#     else:
+#         reply = kernel.respond("Pay "+msg )
+
+    
+#     if kernel.getPredicate("amount"):
+#         amount = int(kernel.getPredicate("amount"))*100
+#         url = "https://www.tutorialspoint.com/aiml/aiml_setget_tag.htm"
+#         kernel.setPredicate("url",url)
+
+    # print(reply)
 
 app = Flask(__name__)
 
@@ -36,20 +47,30 @@ def respond(message):
 
 @app.route('/')
 def home():
-    return "welcome to whatsapp payment integration"
+    return "Welcome to Whatsapp payment integration"
 
 
 @app.route('/message', methods=['POST'])
 def reply():
     message = request.form.get('Body').lower()
-
     phone_no = request.form.get('From')
 
-    url = initializePayment(phone_no)["data"]["authorization_url"]
 
-    if message == "done":
-        return respond(f'Danko! your payment was successfully.')
+    if not message.isdigit():
+        reply = kernel.respond(message)
+    else:
+        reply = kernel.respond("Pay "+message)
 
-    if "pay" in message:
-        return respond(f'Please click the link to complete payment and reply *done*: '+ url)
+    if kernel.getPredicate("amount"):
+        amount = int(kernel.getPredicate("amount"))*100
+        url = initializePayment(phone_no,amount)["data"]["authorization_url"]
+        kernel.setPredicate("url",url)
+
+    
+
+    # if message == "done":
+    #     return respond(f'Danko! your payment was successfully.')
+
+    # if "pay" in message:
+    #     return respond(f'Please click the link to complete payment and reply *done*: '+ url)
 
