@@ -66,11 +66,7 @@ def reply():
         url = initializePayment(phone_no,amount)["data"]["authorization_url"]
         kernel.setPredicate("url",url)
 
-    
+    return respond(reply)
 
-    # if message == "done":
-    #     return respond(f'Danko! your payment was successfully.')
 
-    # if "pay" in message:
-    #     return respond(f'Please click the link to complete payment and reply *done*: '+ url)
 
