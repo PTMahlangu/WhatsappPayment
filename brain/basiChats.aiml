@@ -14,7 +14,7 @@
     <category>
         <pattern>PAY *</pattern>
         <template>
-            Please confirm that you're paying R <set name = "amount"> *<star/>* </set>, (y/n).
+            Please confirm that you're paying R <set name = "amount"> <star/> </set>, (y/n).
         </template>
     </category>
 
