@@ -1,6 +1,6 @@
 
 from flask import Flask, request
-from controller import WhatsappRespond
+from controller import *
 
 app = Flask(__name__)
 

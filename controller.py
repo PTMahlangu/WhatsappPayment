@@ -1,7 +1,6 @@
 import os
 import aiml
 from dotenv import load_dotenv
-from flask import Flask, request, render_template
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 from payment.paystack import initializePayment
