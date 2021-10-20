@@ -30,7 +30,6 @@ def respond(message):
     return str(response)
 
 
-
 @app.route('/')
 def home():
     return "Welcome to Whatsapp payment integration"
