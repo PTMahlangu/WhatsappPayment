@@ -10,19 +10,17 @@
 <!-- Include the Yoco SDK in your web page -->
 <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
 
-<!-- Create a pay button that will open the popup-->
-    <button id="checkout-button">Pay</button>
-
  <script>
     var yoco = new window.YocoSDK({
         publicKey: 'pk_test_ed3c54a6gOol69qa7f45',
     });
-    var checkoutButton = document.querySelector('#checkout-button');
-    checkoutButton.addEventListener('click', function () {
+    
+    window.onload = function myYoco() {
+        var money = 3200
         yoco.showPopup({
-        amountInCents: 2799,
+        amountInCents: money,
         currency: 'ZAR',
-        name: 'Your Store or Product',
+        name: 'MY STORE',
         description: 'Awesome description',
         callback: function (result) {
             // This function returns a token that your server can use to capture a payment
@@ -36,14 +34,23 @@
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ token: response.id })
-                    })
+                        body: JSON.stringify({ token: result.id, amount:money })
+                    }).then(res => res.json())
+                    .then(data => {
+                            if(data.errorCode){
+                                alert(data.displayMessage);
+                            }
+                            else{
+                                alert(data.status);
+                            }
+                        }).catch(error => {
+                            alert(error.message);
+                        })
             }
-            // In a real integration - you would now pass this chargeToken back to your
-            // server along with the order/basket that the customer has purchased.
+
         }
         })
-    });
+    }; 
     </script>
 
 </body>

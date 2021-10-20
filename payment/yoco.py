@@ -21,6 +21,8 @@ def yocoPayment(token,amount):
         },
     )
 
-    # response.status_code will contain the HTTP status code
-    # response.json() will contain the response body
-    return response.json
+
+    if response.status_code == 201:
+        return response.content
+    else:
+        return {"msg":"error"}
