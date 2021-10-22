@@ -20,7 +20,6 @@ def yocoPayment(token,amount):
         },
     )
 
-
     if response.status_code == 201:
         return response.content
     else:
