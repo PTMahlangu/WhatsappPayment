@@ -37,19 +37,18 @@ def home():
     return "Welcome to Whatsapp payment integration " 
 
 
-
 @app.route('/pay')
 def yoco():
     user_amount = 5000
     return render_template('yoco.html',data=json.dumps(user_amount))
 
 
-# @app.route('/yoco', methods=['POST'])
-# def yoco_pay():
+@app.route('/yoco', methods=['POST'])
+def yoco_pay():
     
-#     token = request.get_json()["token"]
-#     amount = request.get_json()["amount"]
-#     return yocoPayment(token,amount)
+    token = request.get_json()["token"]
+    amount = request.get_json()["amount"]
+    return yocoPayment(token,amount)
 
 
 @app.route('/message', methods=['POST'])
