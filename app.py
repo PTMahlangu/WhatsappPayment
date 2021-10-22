@@ -1,5 +1,6 @@
 import os
 import aiml
+import json
 from dotenv import load_dotenv
 from flask import Flask, request, render_template
 from twilio.twiml.messaging_response import MessagingResponse
@@ -35,7 +36,11 @@ def respond(message):
 def home():
     return "Welcome to Whatsapp payment integration"
 
+@app.route('/yoco')
+def yoco():
+    return render_template('yoco.html')
 
+    
 @app.route('/message', methods=['POST'])
 def reply():
     message = request.form.get('Body').lower()
