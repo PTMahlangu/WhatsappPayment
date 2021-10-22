@@ -6,7 +6,7 @@ from flask import Flask, request, render_template
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 from payment.paystack import initializePayment
-
+from payment.yoco import yocoPayment
 
 load_dotenv()
 
@@ -25,23 +25,32 @@ auth_token = os.environ['auth_token']
 client = Client(account_sid, auth_token)
 
 
+
 def respond(message):
     response = MessagingResponse()
     response.message(message)
     return str(response)
 
 
-
 @app.route('/')
 def home():
     return "Welcome to Whatsapp payment integration " 
 
+
 @app.route('/yoco')
 def yoco():
-    user_amount = 6200
+    global user_amount
     return render_template('yoco.html',data=json.dumps(user_amount))
 
+
+@app.route('/pay', methods=['POST'])
+def yoco_pay():
     
+    token = request.get_json()["token"]
+    amount = request.get_json()["amount"]
+    return yocoPayment(token,amount)
+
+
 @app.route('/message', methods=['POST'])
 def reply():
     message = request.form.get('Body').lower()
@@ -56,9 +65,10 @@ def reply():
         reply = "Oops! Something wrong. How much would you like to pay?"
 
     if kernel.getPredicate("amount"):
-        amount = int(kernel.getPredicate("amount"))*100
+        global user_amount
+        user_amount = int(kernel.getPredicate("amount"))*100
         # url = initializePayment(phone_no,amount)["data"]["authorization_url"]
-        url = str(request.url_root)
+        url = str(request.url_roo) +"yoco"
         kernel.setPredicate("url",url)
 
     return respond(reply)
