@@ -24,7 +24,7 @@
         yoco.showPopup({
         amountInCents: userAmount,
         currency: 'ZAR',
-        name: 'STORE NAME',
+        name: 'YOUR STORE NAME',
         description: 'Awesome description',
         callback: function (result) {
             // This function returns a token that your server can use to capture a payment
@@ -32,7 +32,8 @@
             const errorMessage = result.error.message;
             alert("error occured: " + errorMessage);
             } else {
-                fetch('/pay', {
+                alert("card successfully tokenised: ");
+                fetch('/yoco', {
                         method: 'post',
                         headers: {
                             'Content-Type': 'application/json'

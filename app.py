@@ -36,15 +36,15 @@ def respond(message):
 def home():
     return "Welcome to Whatsapp payment integration " 
 
-user_amount = 500
 
-@app.route('/yoco')
+
+@app.route('/pay')
 def yoco():
-    global user_amount
+    user_amount = 5000
     return render_template('yoco.html',data=json.dumps(user_amount))
 
 
-@app.route('/pay', methods=['POST'])
+@app.route('/yoco', methods=['POST'])
 def yoco_pay():
     
     token = request.get_json()["token"]
@@ -66,10 +66,9 @@ def reply():
         reply = "Oops! Something wrong. How much would you like to pay?"
 
     if kernel.getPredicate("amount"):
-        global user_amount
-        user_amount = int(kernel.getPredicate("amount"))*100
+        amount = int(kernel.getPredicate("amount"))*100
         # url = initializePayment(phone_no,amount)["data"]["authorization_url"]
-        url = str(request.url_roo) +"yoco"
+        url = str(request.url_roo) +"pay"
         kernel.setPredicate("url",url)
 
     return respond(reply)
