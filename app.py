@@ -34,11 +34,12 @@ def respond(message):
 
 @app.route('/')
 def home():
-    return "Welcome to Whatsapp payment integration"
+    return "Welcome to Whatsapp payment integration " + str(request.url_root)
 
 @app.route('/yoco')
 def yoco():
-    return render_template('yoco.html')
+    user_amount = 6200
+    return render_template('yoco.html',data=json.dumps(user_amount))
 
     
 @app.route('/message', methods=['POST'])
