@@ -36,7 +36,7 @@ def respond(message):
 def home():
     return "Welcome to Whatsapp payment integration " 
 
-user_amount = 50
+user_amount = 500
 
 @app.route('/yoco')
 def yoco():
