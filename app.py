@@ -34,7 +34,7 @@ def respond(message):
 
 @app.route('/')
 def home():
-    return "Welcome to Whatsapp payment integration " + str(request.url_root)
+    return "Welcome to Whatsapp payment integration " 
 
 @app.route('/yoco')
 def yoco():
@@ -57,7 +57,8 @@ def reply():
 
     if kernel.getPredicate("amount"):
         amount = int(kernel.getPredicate("amount"))*100
-        url = initializePayment(phone_no,amount)["data"]["authorization_url"]
+        # url = initializePayment(phone_no,amount)["data"]["authorization_url"]
+        url = str(request.url_root)
         kernel.setPredicate("url",url)
 
     return respond(reply)
