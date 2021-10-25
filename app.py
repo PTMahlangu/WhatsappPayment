@@ -3,6 +3,7 @@ import aiml
 import json
 from dotenv import load_dotenv
 from flask import Flask, request, render_template
+from requests.api import options
 from twilio.twiml.messaging_response import MessagingResponse
 from twilio.rest import Client
 from payment.paystack import initializePayment
@@ -57,7 +58,10 @@ def reply():
     message = request.form.get('Body').lower()
     phone_no = request.form.get('From')
 
-    if not message.isdigit() or int(message) < 2:
+    if not message.isdigit() :
+        reply = kernel.respond(message)
+    elif int(message) <= 2:
+        options = int(message)
         reply = kernel.respond(message)
     else:
         reply = kernel.respond("Pay "+message)
@@ -67,8 +71,10 @@ def reply():
 
     if kernel.getPredicate("amount"):
         user_amount = int(kernel.getPredicate("amount"))*100
-        # url = initializePayment(phone_no,user_amount)["data"]["authorization_url"]
-        url = str(request.url_root) +"pay"
+        if options ==1:
+            url = initializePayment(phone_no,user_amount)["data"]["authorization_url"]
+        if options ==2:   
+            url = str(request.url_root) +"pay"
         kernel.setPredicate("url",url)
 
     if reply == "Please choose a payment option:":
