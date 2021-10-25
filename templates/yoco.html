@@ -10,15 +10,14 @@
 <!-- Include the Yoco SDK in your web page -->
 <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
 
-    <script>
-        var userAmount = JSON.parse('{{ data | safe }}');
-    </script>
 
  <script>
     var yoco = new window.YocoSDK({
         publicKey: 'pk_test_ed3c54a6gOol69qa7f45',
     });
     
+    var userAmount = JSON.parse('{{ data | safe }}');
+
     window.onload = function myYoco() {
 
         yoco.showPopup({
@@ -33,12 +32,12 @@
             alert("error occured: " + errorMessage);
             } else {
                 alert("card successfully tokenised: " + result.id);
-                fetch('/pay', {
+                fetch('http://127.0.0.1:5000/yoco', {
                         method: 'post',
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ token: result.id, amount:money })
+                        body: JSON.stringify({ token: result.id})
                     }).then(res => res.json())
                     .then(data => {
                             if(data.errorCode){

@@ -29,20 +29,19 @@ def respond(message):
     return str(response)
 
 
-@app.route('/yoco')
+@app.route('/')
 def home():
     user_amount = 6200
-    print('url:' +str(request.url_root)+"yoco")
     return render_template('yoco.html',data=json.dumps(user_amount))
 
 
-@app.route('/pay', methods=['POST'])
+@app.route('/yoco', methods=['POST'])
 def reply():
 
-    token = request.get_json()["token"]
-    amount = request.get_json()["amount"]
+    inData = request.get_json()
 
-    return yocoPayment(token,amount)
+    print(inData)
+    return ""
 
 
 
