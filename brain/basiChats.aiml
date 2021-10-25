@@ -21,13 +21,27 @@
    <category>
       <pattern>Y</pattern>
       <template>
-        Please click the link to complete the payment : <get name = "url"></get>
+        Please choose a payment option:
+        1. yoco
+        2. paystack
       </template>
    </category>
 
    <category>
       <pattern>N</pattern>
       <template>Retype correct amount</template>
+   </category>
+
+   <category>
+      <pattern>1</pattern>
+      <template>
+        Please click the link to complete the payment : <get name = "yoco"></get>
+      </template>
+   </category>
+
+   <category>
+      <pattern>2</pattern>
+      <template>Please click the link to complete the payment : <get name = "paystack"></get></template>
    </category>
 
     <category>
