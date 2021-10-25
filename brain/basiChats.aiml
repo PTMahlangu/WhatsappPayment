@@ -22,8 +22,8 @@
       <pattern>Y</pattern>
       <template>
         Please choose a payment option:
-        1. yoco
-        2. paystack
+        a. *Yoco*
+        b. *Paystack*
       </template>
    </category>
 
@@ -33,15 +33,15 @@
    </category>
 
    <category>
-      <pattern>1</pattern>
+      <pattern>a</pattern>
       <template>
-        Please click the link to complete the payment : <get name = "yoco"></get>
+        Please click the link to complete the payment : <get name = "url"></get>
       </template>
    </category>
 
    <category>
-      <pattern>2</pattern>
-      <template>Please click the link to complete the payment : <get name = "paystack"></get></template>
+      <pattern>b</pattern>
+      <template>Please click the link to complete the payment : <get name = "url"></get></template>
    </category>
 
     <category>
