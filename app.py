@@ -57,7 +57,7 @@ def reply():
     message = request.form.get('Body').lower()
     phone_no = request.form.get('From')
 
-    if not message.isdigit():
+    if not message.isdigit() or int(message) < 2:
         reply = kernel.respond(message)
     else:
         reply = kernel.respond("Pay "+message)
@@ -72,8 +72,8 @@ def reply():
         kernel.setPredicate("url",url)
 
     if reply == "Please choose a payment option:":
-       reply += "\n a. *Yoco*"
-       
+       reply += "\n 1. *Yoco*\n 2. *Paystack*"
+
     return respond(reply)
 
 
