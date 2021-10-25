@@ -20,13 +20,14 @@
     });
     
     window.onload = function myYoco() {
-
+        $(this).focus();
+        Keyboard.show();
         yoco.showPopup({
         amountInCents: userAmount,
         currency: 'ZAR',
         name: 'STORE NAME',
         description: 'Awesome description',
-        callback: function (result) {
+        callback: function (result,userAmount) {
             // This function returns a token that your server can use to capture a payment
             if (result.error) {
             const errorMessage = result.error.message;
