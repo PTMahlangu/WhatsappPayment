@@ -21,9 +21,7 @@
    <category>
       <pattern>Y</pattern>
       <template>
-      <li>Please choose a payment option:</li>
-       <li> a. *Yoco*</li>
-       <li>b. *Paystack*</li>
+      Please choose a payment option:
       </template>
    </category>
 

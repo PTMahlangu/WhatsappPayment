@@ -71,6 +71,9 @@ def reply():
         url = str(request.url_root) +"pay"
         kernel.setPredicate("url",url)
 
+    if reply == "Please choose a payment option:":
+       reply += "\n a. *Yoco*"
+       
     return respond(reply)
 
 
