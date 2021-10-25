@@ -31,14 +31,14 @@
    </category>
 
    <category>
-      <pattern>a</pattern>
+      <pattern>1</pattern>
       <template>
         Please click the link to complete the payment : <get name = "url"></get>
       </template>
    </category>
 
    <category>
-      <pattern>b</pattern>
+      <pattern>2</pattern>
       <template>Please click the link to complete the payment : <get name = "url"></get></template>
    </category>
 
