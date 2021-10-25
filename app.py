@@ -66,8 +66,8 @@ def reply():
 
     if kernel.getPredicate("amount"):
         user_amount = int(kernel.getPredicate("amount"))*100
-        # url = initializePayment(phone_no,amount)["data"]["authorization_url"]
-        url = str(request.url_root) +"pay"
+        url = initializePayment(phone_no,user_amount)["data"]["authorization_url"]
+        # url = str(request.url_root) +"pay"
         kernel.setPredicate("url",url)
 
     return respond(reply)
