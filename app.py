@@ -24,7 +24,8 @@ account_sid = os.environ['account_sid']
 auth_token = os.environ['auth_token']
 client = Client(account_sid, auth_token)
 
-
+global user_amount
+user_amount = 200
 
 def respond(message):
     response = MessagingResponse()
@@ -40,7 +41,7 @@ def home():
 @app.route('/pay')
 def yoco():
     # global user_amount
-    # user_amount = 5200
+
     return render_template('yoco.html',data=json.dumps(user_amount))
 
 
