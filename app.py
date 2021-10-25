@@ -38,7 +38,7 @@ def home():
 
 
 @app.route('/pay')
-def yoco(user_amount = 200):
+def yoco():
     # global user_amount
     # user_amount = 5200
     return render_template('yoco.html',data=json.dumps(user_amount))
