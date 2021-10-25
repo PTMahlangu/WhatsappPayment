@@ -27,7 +27,7 @@
         currency: 'ZAR',
         name: 'STORE NAME',
         description: 'Awesome description',
-        callback: function (result,userAmount) {
+        callback: function (result) {
             // This function returns a token that your server can use to capture a payment
             if (result.error) {
             const errorMessage = result.error.message;
@@ -39,7 +39,7 @@
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ token: result.id, amount:userAmount})
+                        body: JSON.stringify({ token: result.id})
                     }).then(res => res.json())
                     .then(data => {
                             if(data.errorCode){

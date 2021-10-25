@@ -46,8 +46,8 @@ def yoco():
 
 @app.route('/yoco', methods=['POST'])
 def yoco_pay():
-    data = request.get_json()
-    return yocoPayment(data['token'],data['amount'])
+    token = request.get_json()
+    return yocoPayment(token,user_amount)
 
 
 @app.route('/message', methods=['POST'])
