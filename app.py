@@ -39,20 +39,20 @@ def home():
 
 @app.route('/pay')
 def yoco():
-    global user_amount
-    user_amount = 5200
+    # global user_amount
+    # user_amount = 5200
     return render_template('yoco.html',data=json.dumps(user_amount))
 
 
 @app.route('/yoco', methods=['POST'])
 def yoco_pay():
-    token = request.get_json()
-    return yocoPayment(token,user_amount)
+    data = request.get_json()
+    return yocoPayment(data['token'],data['amount'])
 
 
 @app.route('/message', methods=['POST'])
 def reply():
-    # global user_amount
+    global user_amount
     message = request.form.get('Body').lower()
     phone_no = request.form.get('From')
 

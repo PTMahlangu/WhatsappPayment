@@ -32,19 +32,20 @@
             const errorMessage = result.error.message;
             alert("error occured: " + errorMessage);
             } else {
+                alert("card successfully tokenised: " + result.id);
                 fetch('/yoco', {
                         method: 'post',
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ token: result.id})
+                        body: JSON.stringify({ token: result.id, amount:userAmount})
                     }).then(res => res.json())
                     .then(data => {
                             if(data.errorCode){
                                 alert(data.displayMessage);
                             }
                             else{
-                                alert("Your payment was successfully");
+                                alert(data.status);
                             }
                         }).catch(error => {
                             alert(error.message);
