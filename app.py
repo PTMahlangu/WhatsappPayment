@@ -39,20 +39,20 @@ def home():
 
 @app.route('/pay')
 def yoco():
-    user_amount = 5000
+    global user_amount
     return render_template('yoco.html',data=json.dumps(user_amount))
 
 
 @app.route('/yoco', methods=['POST'])
 def yoco_pay():
-    
+    global user_amount
     token = request.get_json()
-    print(token )
-    return "hello"
+    return yocoPayment(token,user_amount)
 
 
 @app.route('/message', methods=['POST'])
 def reply():
+    global user_amount
     message = request.form.get('Body').lower()
     phone_no = request.form.get('From')
 
@@ -65,7 +65,7 @@ def reply():
         reply = "Oops! Something wrong. How much would you like to pay?"
 
     if kernel.getPredicate("amount"):
-        amount = int(kernel.getPredicate("amount"))*100
+        user_amount = int(kernel.getPredicate("amount"))*100
         # url = initializePayment(phone_no,amount)["data"]["authorization_url"]
         url = str(request.url_roo) +"pay"
         kernel.setPredicate("url",url)

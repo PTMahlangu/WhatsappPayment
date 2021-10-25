@@ -38,7 +38,7 @@
                         headers: {
                             'Content-Type': 'application/json'
                         },
-                        body: JSON.stringify({ token: result.id, amount:money })
+                        body: JSON.stringify({ token: result.id})
                     }).then(res => res.json())
                     .then(data => {
                             if(data.errorCode){
